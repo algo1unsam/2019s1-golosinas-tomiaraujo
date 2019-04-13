@@ -1,21 +1,23 @@
 object bombon {
 	var peso = 15
 	
-	method precio() { return 5 }
-	method peso() { return peso }
-	method mordisco() { peso = peso * 0.8 - 1 }
-	method gusto() { return "frutilla" }
-	method libreGluten() { return true }
+	method precio() = 5
+	method peso() = peso
+	method gusto() = "frutilla"
+	method libreGluten() = true
+	
+	method mordisco() { (peso = peso * 0.8 - 1).max(0) } //devuelve el valor de peso, pero si es menor a 0, devuelve 0.
 }
 
 object alfajor {
 	var peso = 30
 	
-	method precio() { return 12 }
-	method peso() { return peso }
+	method precio() = 12
+	method peso() = peso	
+	method gusto() = "chocolate"
+	method libreGluten() = false
+	
 	method mordisco() { peso = peso * 0.8 }
-	method gusto() { return "chocolate" }
-	method libreGluten() { return false }
 }
 
 object caramelo {
@@ -99,6 +101,7 @@ object golosinaBaniada {
 object tuttifrutti {
 	// como manejar el cambio de sabor ??
 	var peso = 5
+	//var gusto = "frutilla"
 	var cantMordiscos = 0
 	var property libreGluten = true
 	
@@ -110,6 +113,7 @@ object tuttifrutti {
 	method mordisco() {
 		cantMordiscos = cantMordiscos + 1
 	}
+	
 	method gusto() {
 		if(cantMordiscos == 0){
 			return "frutilla"
@@ -126,3 +130,15 @@ object tuttifrutti {
 	
 }
 
+/*object frutilla{
+	method siguiente() = chocolate
+}
+
+object chocolate{
+	method siguiente() = naranja
+}
+
+object naranja{
+	method siguiente() = frutilla
+}
+*/
