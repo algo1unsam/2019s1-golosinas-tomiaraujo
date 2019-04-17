@@ -1,12 +1,14 @@
+import mariano.*
+
 object bombon {
 	var peso = 15
 	
 	method precio() = 5
 	method peso() = peso
-	method gusto() = "frutilla"
+	method gusto() = frutilla
 	method libreGluten() = true
 	
-	method mordisco() { (peso = peso * 0.8 - 1).max(0) } //devuelve el valor de peso, pero si es menor a 0, devuelve 0.
+	method mordisco() { (peso = (peso * 0.8 - 1).max(0)) } //devuelve el valor de peso, pero si es menor a 0, devuelve 0.
 }
 
 object alfajor {
@@ -14,7 +16,7 @@ object alfajor {
 	
 	method precio() = 12
 	method peso() = peso	
-	method gusto() = "chocolate"
+	method gusto() = chocolate
 	method libreGluten() = false
 	
 	method mordisco() { peso = peso * 0.8 }
@@ -26,7 +28,7 @@ object caramelo {
 	method precio() { return 1 }
 	method peso() { return peso }
 	method mordisco() { peso = peso - 1}
-	method gusto() { return "frutilla" }
+	method gusto() { return frutilla }
 	method libreGluten() { return true }
 }
 
@@ -42,7 +44,7 @@ object chupetin {
 		
 		}
 	}
-	method gusto() { return "naranja" }
+	method gusto() { return naranja }
 	method libreGluten() { return true }
 }
 
@@ -58,7 +60,7 @@ object oblea {
 		else
 			peso = peso * 0.75
 	}
-	method gusto() { return "vainilla" }
+	method gusto() { return vainilla }
 	method libreGluten() { return false }
 }
 
@@ -77,7 +79,7 @@ object chocolatin {
 	method precio() {
 		return pesoInicial * 0.5
 	}
-	method gusto() { return "chocolate" }
+	method gusto() { return chocolate }
 	method libreGluten() { return false }
 	method mordisco() { pesoInicial = pesoInicial - 2}
 }
@@ -101,7 +103,7 @@ object golosinaBaniada {
 object tuttifrutti {
 	// como manejar el cambio de sabor ??
 	var peso = 5
-	//var gusto = "frutilla"
+	var gusto = "frutilla"
 	var cantMordiscos = 0
 	var property libreGluten = true
 	
@@ -114,7 +116,13 @@ object tuttifrutti {
 		cantMordiscos = cantMordiscos + 1
 	}
 	
-	method gusto() {
+	method gusto() = gusto
+	
+	method cambiarSabor(){
+		gusto=gusto.siguiente()
+	}
+	
+	/*method gusto() {
 		if(cantMordiscos == 0){
 			return "frutilla"
 			}
@@ -126,11 +134,11 @@ object tuttifrutti {
 		}
 		else
 			return "frutilla"
-	}
+	}*/
 	
 }
 
-/*object frutilla{
+object frutilla{
 	method siguiente() = chocolate
 }
 
@@ -141,4 +149,8 @@ object chocolate{
 object naranja{
 	method siguiente() = frutilla
 }
-*/
+
+object vainilla{
+	method siguiente() = self
+}
+
