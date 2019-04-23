@@ -2,6 +2,8 @@ import golosinas.*
 
 object mariano {
 	var golosinas = #{}
+	var golosinasDeseadas = #{}
+	var gustosDeseados = #{}
 	//var gustos = []
 	
 	// para este objeto no damos pistas
@@ -47,6 +49,15 @@ object mariano {
 	
 	method pesoGolosinas(){
 		return golosinas.sum{golosina=>golosina.peso()}
+	}
+	
+	method golosinasFaltantes(){
+		return golosinasDeseadas.difference(golosinas)
+		//#{1, 2}.difference(#{5, 2}) => #{1}
+	}
+	
+	method gustosFaltantes(){
+		return gustosDeseados
 	}
 }
 
