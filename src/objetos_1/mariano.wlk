@@ -2,8 +2,8 @@ import golosinas.*
 
 object mariano {
 	var golosinas = #{}
-	var golosinasDeseadas = #{}
-	var gustosDeseados = #{}
+	var property golosinasDeseadas = #{}
+	var property gustosDeseados = #{}
 	//var gustos = []
 	
 	// para este objeto no damos pistas
@@ -56,8 +56,11 @@ object mariano {
 		//#{1, 2}.difference(#{5, 2}) => #{1}
 	}
 	
-	method gustosFaltantes(){
-		return gustosDeseados
-	}
+	/*method gustosFaltantes(){
+		return gustosDeseados.difference(golosinas.filter(golosina => golosina.gusto()))
+	}*/
+	
+	/*method difference(another) =
+	 	self.filter({it => not another.contains(it)})*/
 }
 
